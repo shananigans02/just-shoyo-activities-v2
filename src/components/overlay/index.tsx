@@ -12,12 +12,114 @@ interface SystemOverlayProps {
 }
 
 /**
+ * FYI Modal
+ */
+function FYIModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  if (!isOpen) return null;
+
+  return (
+    <div className="pointer-events-auto fixed inset-0 z-50 flex items-center justify-center">
+      {/* Backdrop */}
+      <div
+        className="absolute inset-0 bg-black/40"
+        onClick={onClose}
+        onKeyDown={(e) => e.key === "Escape" && onClose()}
+        role="button"
+        tabIndex={0}
+        aria-label="Close"
+      />
+
+      {/* Modal */}
+      <div className="relative mx-4 max-h-[80vh] w-full max-w-lg overflow-y-auto border border-[var(--void-gray-300)] bg-white p-6 shadow-lg">
+        {/* Close button */}
+        <button
+          className="absolute top-4 right-4 font-system text-[var(--void-gray-400)] transition-colors hover:text-[var(--void-gray-600)]"
+          onClick={onClose}
+          type="button"
+        >
+          ✕
+        </button>
+
+        <div className="font-system text-[11px] leading-relaxed text-[var(--void-gray-500)]">
+          <p className="mb-4">
+            hi!{" "}
+            <a
+              href="https://x.com/notshananigans"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--void-gray-600)] underline transition-colors hover:text-black"
+            >
+              shanz
+            </a>
+            {" "}here,
+          </p>
+
+          <p className="mb-4">
+            1) if u wanna create sth like this w the infinite zoom in + out, pls go to{" "}
+            <a
+              href="https://github.com/yyyyaaa/yyyyaaa-2026"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--void-gray-600)] underline transition-colors hover:text-black"
+            >
+              this link
+            </a>
+            {" "}from{" "}
+            <a
+              href="https://x.com/phatggg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--void-gray-600)] underline transition-colors hover:text-black"
+            >
+              @phatggg
+            </a>
+            {" "}on x who was kind enough to open source his{" "}
+            <a
+              href="https://www.yyyyaaa.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--void-gray-600)] underline transition-colors hover:text-black"
+            >
+              website
+            </a>
+          </p>
+
+          <p className="mb-3">
+            2) if u wanna create similar images — use this prompt in chatgpt:
+          </p>
+
+          <div className="mb-2 border border-[var(--void-gray-200)] bg-[var(--void-gray-50,#fafafa)] p-3 text-[10px] leading-relaxed text-[var(--void-gray-400)]">
+            <p className="mb-2 font-bold text-[var(--void-gray-500)]">Updated prompt (copy/paste):</p>
+            <p className="mb-2">
+              Stylized miniature collectible figurine of Hinata Shoyo from Haikyuu!! — non-chibi anime scale figure. Render as a 1/8 scale PVC/resin collectible with true-to-anime proportions: head only slightly oversized (NOT chibi), slender limbs, realistic teen-athlete body ratios, clean simplified geometry, crisp silhouette, matte plastic/resin material, soft stylized shading, minimal micro-texture, clean modern collectible aesthetic (premium figure photography vibe), not photoreal skin.
+            </p>
+            <p className="mb-2">
+              Pose: Hinata crouched / bent forward, both hands low, gently scattering small crumbs toward 3–4 crows on the ground; calm focused expression; hair spiky orange; Karasuno uniform.
+            </p>
+            <p className="mb-2">
+              Diorama base: small clean miniature base with smooth continuous realistic flooring (cast concrete / compacted ground), subtle natural surface texture, softly blended edges, a few small realistic environment accents (tiny grass tufts, a small bench or bag optional), NO tiles, NO blocky/lego look, NO hard grid patterns. Balanced composition, miniature scale model, isometric 3/4 top-down view, centered product shot.
+            </p>
+            <p className="mb-2">
+              Lighting &amp; render: bright white background, soft studio product lighting, high-key exposure, soft contact shadows, global illumination, clean edges, consistent style, sharp focus, 4K, modern collectible render.
+            </p>
+            <p>
+              Negative prompt: chibi, super deformed, big head, tiny body, bobblehead, nendoroid, SD style, cartoon toy proportions, kawaii oversized face, huge eyes, toddler proportions; photoreal human skin, pores, veins, realism, gritty texture; lego, voxel, blocky base, tiled floor, checkerboard, hard grid; low-res, blurry, noisy, messy background, harsh shadows, dramatic low-key lighting.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
  * Main system overlay
  */
 export function SystemOverlay({
   showScanLines = true,
   children,
 }: SystemOverlayProps) {
+  const [isFYIOpen, setIsFYIOpen] = useState(false);
 
   return (
     <div
@@ -34,7 +136,7 @@ export function SystemOverlay({
         </a>
       </div>
 
-      {/* Top right - Fan Request + FYI info */}
+      {/* Top right - Fan Request + FYI */}
       <div className="absolute top-5 right-5 text-right sm:top-6 sm:right-6">
         <a
           className="pointer-events-auto font-system text-[var(--void-gray-400)] transition-colors hover:text-[var(--void-gray-600)]"
@@ -47,34 +149,21 @@ export function SystemOverlay({
           <span className="text-[var(--void-gray-300)] hover:text-[var(--void-gray-500)]">]</span>
         </a>
 
-        <div className="pointer-events-auto mt-4 max-w-[260px] text-left font-system text-[10px] leading-relaxed text-[var(--void-gray-300)]">
-          <p className="mb-2">
-            FYI ay hi!{" "}
-            <a href="https://x.com/notshananigans" target="_blank" rel="noopener noreferrer" className="text-[var(--void-gray-400)] transition-colors hover:text-[var(--void-gray-600)]">
-              shanz
-            </a>
-            {" "}here.
-          </p>
-          <p className="mb-2">
-            1) if u wanna create sth like this w the infinite zoom in + out, pls go to{" "}
-            <a href="https://www.yyyyaaa.com/" target="_blank" rel="noopener noreferrer" className="text-[var(--void-gray-400)] transition-colors hover:text-[var(--void-gray-600)]">
-              website
-            </a>
-            {" / "}
-            <a href="https://github.com/yyyyaaa/yyyyaaa-2026" target="_blank" rel="noopener noreferrer" className="text-[var(--void-gray-400)] transition-colors hover:text-[var(--void-gray-600)]">
-              github
-            </a>
-            {" "}from{" "}
-            <a href="https://x.com/phatggg" target="_blank" rel="noopener noreferrer" className="text-[var(--void-gray-400)] transition-colors hover:text-[var(--void-gray-600)]">
-              @phatggg
-            </a>
-            {" "}on x who was kind enough to open source his website
-          </p>
-          <p>
-            2) if u wanna create similar images — use this prompt in chatgpt: "Stylized miniature collectible figurine of Hinata Shoyo from Haikyuu!! — non-chibi anime scale figure..."
-          </p>
+        <div className="mt-1">
+          <button
+            className="pointer-events-auto font-system text-[var(--void-gray-400)] transition-colors hover:text-[var(--void-gray-600)]"
+            onClick={() => setIsFYIOpen(true)}
+            type="button"
+          >
+            <span className="text-[var(--void-gray-300)] hover:text-[var(--void-gray-500)]">[</span>
+            FYI
+            <span className="text-[var(--void-gray-300)] hover:text-[var(--void-gray-500)]">]</span>
+          </button>
         </div>
       </div>
+
+      {/* FYI Modal */}
+      <FYIModal isOpen={isFYIOpen} onClose={() => setIsFYIOpen(false)} />
 
       {/* Center content slot */}
       {children && (
