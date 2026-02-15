@@ -11,36 +11,24 @@ import { type ReactNode, useEffect, useState } from "react";
  */
 
 interface SystemOverlayProps {
-  /** Cryptic organizational designation */
-  designation?: string;
-  /** Operator identifier */
-  operatorId?: string;
-  /** Operator clearance level */
-  clearance?: string;
-  /** System status - affects indicator color */
-  status?: "nominal" | "processing" | "standby";
   /** Show scan line effect */
   showScanLines?: boolean;
-  /** Callback when contact is clicked */
-  onContactClick?: () => void;
   /** Callback when games/recreation is clicked */
   onGamesClick?: () => void;
   /** Children rendered in center (optional) */
   children?: ReactNode;
+  [key: string]: unknown;
 }
 
 /**
  * Main system overlay - minimal, mysterious, institutional.
  */
+
 export function SystemOverlay({
-  designation = "SECTOR-7G",
-  operatorId = "yyyyaaa",
-  clearance = "CREATIVE",
-  status = "nominal",
   showScanLines = true,
-  onContactClick,
   onGamesClick,
   children,
+  ...rest
 }: SystemOverlayProps) {
 
   return (
@@ -62,7 +50,7 @@ export function SystemOverlay({
       <div className="absolute top-5 right-5 sm:top-6 sm:right-6">
         <a
           className="pointer-events-auto font-system text-[var(--void-gray-400)] transition-colors hover:text-[var(--void-gray-600)]"
-          href="https://x.com/intent/post?text=Hey%20%40notshananigans%20I%20want%20to%20see%20Shoyo%20do%20"
+          href="https://x.com/intent/post?text=hey%20%40notshananigans%20i%20want%20to%20see%20shoyo%20do%20"
           target="_blank"
           rel="noopener noreferrer"
         >
