@@ -9,5 +9,8 @@
   { "url": "/poses/thumb/pose-dog.png", "width": 1536, "height": 1024 },
   { "url": "/poses/thumb/pose-party.png", "width": 1536, "height": 1024 },
   { "url": "/poses/thumb/pose-cat.png", "width": 1536, "height": 1024 },
-  { "url": "/poses/thumb/pose-stretch.png", "width": 1536, "height": 1024 }
+  { "url": "/poses/thumb/pose-stretch.png", "width": 1536, "height": 1024 },
+  { "url": "/poses/thumb/pose-ramen.png", "width": 1536, "height": 1024 },
+  { "url": "/poses/thumb/pose-convenience.png", "width": 1536, "height": 1024 },
+  { "url": "/poses/thumb/pose-crows.png", "width": 1536, "height": 1024 }
 ]
