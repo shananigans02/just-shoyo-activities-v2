@@ -16,7 +16,6 @@ interface SystemOverlayProps {
  */
 export function SystemOverlay({
   showScanLines = true,
-  onGamesClick,
   children,
 }: SystemOverlayProps) {
 
@@ -35,8 +34,8 @@ export function SystemOverlay({
         </a>
       </div>
 
-      {/* Top right - Fan Request button */}
-      <div className="absolute top-5 right-5 sm:top-6 sm:right-6">
+      {/* Top right - Fan Request + FYI info */}
+      <div className="absolute top-5 right-5 text-right sm:top-6 sm:right-6">
         <a
           className="pointer-events-auto font-system text-[var(--void-gray-400)] transition-colors hover:text-[var(--void-gray-600)]"
           href="https://x.com/intent/post?text=hey%20%40notshananigans%2C%20i%20want%20to%20see%20shoyo%20do%20"
@@ -47,37 +46,34 @@ export function SystemOverlay({
           FAN REQUEST
           <span className="text-[var(--void-gray-300)] hover:text-[var(--void-gray-500)]">]</span>
         </a>
-      </div>
 
-      {/* Bottom left - Recreation */}
-      <div
-        className="absolute left-5 sm:left-6"
-        style={{ bottom: "calc(1.25rem + env(safe-area-inset-bottom, 0px))" }}
-      >
-        {onGamesClick && (
-          <button
-            className="pointer-events-auto font-system text-[var(--void-gray-300)] transition-colors hover:text-[var(--void-gray-500)]"
-            onClick={onGamesClick}
-            type="button"
-          >
-            [RECREATION]
-          </button>
-        )}
-      </div>
-
-      {/* Bottom right - Credit */}
-      <div
-        className="absolute right-5 text-right sm:right-6"
-        style={{ bottom: "calc(1.25rem + env(safe-area-inset-bottom, 0px))" }}
-      >
-        <a
-          className="pointer-events-auto font-system text-[var(--void-gray-300)] transition-colors hover:text-[var(--void-gray-500)]"
-          href="https://github.com/yyyyaaa/yyyyaaa-2026"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          built on <span className="text-[var(--void-gray-400)]">yyyyaaa.com</span>
-        </a>
+        <div className="pointer-events-auto mt-4 max-w-[260px] text-left font-system text-[10px] leading-relaxed text-[var(--void-gray-300)]">
+          <p className="mb-2">
+            FYI ay hi!{" "}
+            <a href="https://x.com/notshananigans" target="_blank" rel="noopener noreferrer" className="text-[var(--void-gray-400)] transition-colors hover:text-[var(--void-gray-600)]">
+              shanz
+            </a>
+            {" "}here.
+          </p>
+          <p className="mb-2">
+            1) if u wanna create sth like this w the infinite zoom in + out, pls go to{" "}
+            <a href="https://www.yyyyaaa.com/" target="_blank" rel="noopener noreferrer" className="text-[var(--void-gray-400)] transition-colors hover:text-[var(--void-gray-600)]">
+              website
+            </a>
+            {" / "}
+            <a href="https://github.com/yyyyaaa/yyyyaaa-2026" target="_blank" rel="noopener noreferrer" className="text-[var(--void-gray-400)] transition-colors hover:text-[var(--void-gray-600)]">
+              github
+            </a>
+            {" "}from{" "}
+            <a href="https://x.com/phatggg" target="_blank" rel="noopener noreferrer" className="text-[var(--void-gray-400)] transition-colors hover:text-[var(--void-gray-600)]">
+              @phatggg
+            </a>
+            {" "}on x who was kind enough to open source his website
+          </p>
+          <p>
+            2) if u wanna create similar images — use this prompt in chatgpt: "Stylized miniature collectible figurine of Hinata Shoyo from Haikyuu!! — non-chibi anime scale figure..."
+          </p>
+        </div>
       </div>
 
       {/* Center content slot */}

@@ -30,7 +30,7 @@ interface SEOProps {
 
 // Default configuration
 const DEFAULTS = {
-  title: "yyyyaaa — Product Engineer",
+  title: "shoyoing",
   description:
     "An infinite workspace of procedural tasks. Product Engineer building digital experiences at the intersection of design and engineering.",
   siteName: "yyyyaaa",
