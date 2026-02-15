@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(curl:*)",
+      "Bash(sips:*)",
+      "Bash(for i in 1 5 10 15 20 25 30)",
+      "Bash(do echo \"pose-$i.png:\")",
+      "Bash(for f in *.png)",
+      "Bash(do echo -n \"$f: \")"
+    ]
+  }
+}

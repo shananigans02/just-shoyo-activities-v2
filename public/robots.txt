@@ -1,0 +1,6 @@
+# robots.txt for yyyyaaa.com
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://yyyyaaa.com/sitemap.xml
